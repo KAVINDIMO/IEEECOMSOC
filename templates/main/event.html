@@ -1,0 +1,153 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "icon" href = 
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1kh96f8BEJCiKk6DK-XJI9ehkHJm5sP5UnA65BdlodAtHwZEujObCJcmUbi2jB4Pqf84&usqp=CAU" 
+            type = "image/x-icon">
+            <script src="https://kit.fontawesome.com/8c14248a99.js" crossorigin="anonymous"></script>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap" rel="stylesheet"> 
+
+    </head>
+    <link rel="stylesheet" href="{% static 'CSS\event.css' %}"/>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navtog">
+            <div class="navicon"><i class="fa-solid fa-bars"></i></div>
+            <img class="navimg" src="https://www.comsoc.org/themes/custom/comsoc/components/images/ieee-comsoc.svg">
+        </div>
+        
+            <ul class="navlist">
+                <!-- <span class="logotitle">IEEE COMSOC</span> -->
+                <img class="navimg" src="https://www.comsoc.org/themes/custom/comsoc/components/images/ieee-comsoc.svg">
+                <li class="navitem">HOME</li>
+                <li class="navitem"><a href="/event">EVENTS</a></li>
+                <li class="navitem"> <a href="/blog">BLOG</a></li>
+                <li class="navitem"> <a href="/posts">POSTS</a></li>
+                <li class="navitem">PROJECTS</li>
+                <li class="navitem">BOARD MEMBERS</li>
+                <li class="navitem"><a href="/login">LOGIN</a></li>
+                
+            </ul>
+        </div>
+   
+    <div class="reg_form">
+        <div class="reg_inner">
+        <p class="name"></p>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- {{form.as_p}} -->
+        <label>EVENT NAME:</label>
+        <input name="event" id="ename" readonly>
+        <!-- <input type="text" value="" readonly> -->
+        <label>NAME:</label>
+        <input type="text" name="name" value={{user.username}}>
+        <!-- <input type="text" placeholder="your name"> -->
+        <label>REGISTER NUMBER</label>
+        <input type="text" name="regno" placeholder="YOUR REGNO" >
+        <label>EMAIL</label>
+        <input type="email" name = "email" placeholder="test@vitstudent.ac.in" value={{user.email}}>
+        <label>PHONE</label>
+        {{form.phone}}
+        <input type="submit" value="Submit">
+       </div>
+    </div>
+
+    <div class="event_main">
+    {% for i in obj %}
+   
+      <div class="event_card">
+        <div class="event_img">
+            <img src="{{i.event_image.url}}">
+        </div>
+        <div class="event_content">
+        <div class="content_inner">
+            <p class="event_name">{{i.event_name}}</p>
+            <p>{{i.speaker}}</p>
+            <p>{{i.event_description}}</p>
+            <p class="edate">{{i.event_data|date:"M d,Y H:i:s"}}</p>
+            
+         </div> 
+         <div class="content_act">
+            <p id="starts"></p>
+            <button class="reg_butt">REGISTER</button>
+         </div>
+        </div>
+      </div>
+   
+    {% endfor %}
+</div>
+
+</body>
+
+<script>
+    let butt = document.querySelectorAll(".reg_butt")
+    let events = document.querySelectorAll(".event_name")
+    let reg = document.querySelector(".reg_form")
+    let n = document.querySelector(".name")
+    let en = document.querySelector("#ename")
+
+
+    for(let i=0;i<butt.length;i++){
+        console.log(butt[i])
+        butt[i].onclick = ()=>{
+            reg.classList.add("show_form")
+            n.innerHTML = events[i].innerHTML
+            en.setAttribute('value',events[i].innerHTML)
+            console.log(events[i].innerHTML)
+        }
+     
+    }
+  
+</script>
+
+
+
+
+
+
+
+<script>
+    let edate = document.querySelectorAll("p.edate")
+    // for(let i=0;i<edate.length;i++){
+    //     console.log(edate[i].innerHTML)
+    // }
+    console.log("hello")
+var x = setInterval(function() {
+    for(let i=0;i<edate.length;i++){
+        let date = edate[i].innerHTML
+        var countDownDate = new Date(date).getTime();
+        // console.log(countDownDate)
+
+
+var now = new Date().getTime();
+var distance = countDownDate - now;
+
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+let start = document.querySelectorAll("#starts")
+start[i].innerHTML = days + "d " + hours + "h "
++ minutes + "m " + seconds + "s ";
+
+// If the count down is finished, write some text
+if (distance < 0) {
+
+start[i].innerHTML = "EXPIRED";
+}
+    }
+}, 1000);
+    
+   
+
+</script>
+</html>

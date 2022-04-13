@@ -1,0 +1,58 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IEEE COMSOC</title>
+    <link rel = "icon" href = 
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1kh96f8BEJCiKk6DK-XJI9ehkHJm5sP5UnA65BdlodAtHwZEujObCJcmUbi2jB4Pqf84&usqp=CAU" 
+        type = "image/x-icon">
+        <script src="https://kit.fontawesome.com/8c14248a99.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap" rel="stylesheet"> 
+
+    <link rel='stylesheet'  href="{% static 'CSS\home.css' %}">
+</head>
+<body>
+    <div class="navbar">
+    <div class="navtog">
+        <div class="navicon"><i class="fa-solid fa-bars"></i></div>
+        <img class="navimg" src="https://www.comsoc.org/themes/custom/comsoc/components/images/ieee-comsoc.svg">
+    </div>
+    
+        <ul class="navlist">
+            <!-- <span class="logotitle">IEEE COMSOC</span> -->
+            <img class="navimg" src="https://www.comsoc.org/themes/custom/comsoc/components/images/ieee-comsoc.svg">
+            <li class="navitem">HOME</li>
+            <li class="navitem"><a href="/event">EVENTS</a></li>
+            <li class="navitem"> <a href="/blog">BLOG</a></li>
+            <li class="navitem"> <a href="/posts">POSTS</a></li>
+            <li class="navitem">PROJECTS</li>
+            <li class="navitem">BOARD MEMBERS</li>
+            <li class="navitem"><a href="/login">LOGIN</a></li>
+            
+        </ul>
+    </div>
+   
+</body>
+</html>
+
+<script>
+    let tog = document.querySelector(".navtog")
+    let nav = document.querySelector(".navlist")
+    let temp=0
+    tog.onclick = ()=>{
+        if(temp===0){
+            nav.classList.add("shownav")
+            temp=1
+        }
+        else{
+            nav.classList.remove("shownav")
+            temp=0
+        }
+      
+    }
+</script>
