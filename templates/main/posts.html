@@ -26,7 +26,7 @@
             <ul class="navlist">
                 <!-- <span class="logotitle">IEEE COMSOC</span> -->
                 <img class="navimg" src="https://www.comsoc.org/themes/custom/comsoc/components/images/ieee-comsoc.svg">
-                <li class="navitem">HOME</li>
+                <li class="navitem"><a href="/">HOME</a></li>
                 <li class="navitem"><a href="/event">EVENTS</a></li>
                 <li class="navitem"> <a href="/blog">BLOG</a></li>
                 <li class="navitem"> <a href="/posts">POSTS</a></li>
@@ -44,3 +44,20 @@
     {% endfor %}
 </body>
 </html>
+
+<script>
+    let tog = document.querySelector(".navtog")
+    let nav = document.querySelector(".navlist")
+    let temp=0
+    tog.onclick = ()=>{
+        if(temp===0){
+            nav.classList.add("shownav")
+            temp=1
+        }
+        else{
+            nav.classList.remove("shownav")
+            temp=0
+        }
+      
+    }
+</script>

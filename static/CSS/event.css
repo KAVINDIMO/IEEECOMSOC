@@ -4,7 +4,7 @@
     box-sizing: border-box;
     font-family: barlow,sans-serif;
 
-    color:white;
+
 }
 
 /* nav bar started */
@@ -183,6 +183,7 @@
     background:palegoldenrod;
     background-color: rgba(196, 37, 37, 0.288);
     text-align: center;
+    color:black;
     z-index:999;
     position: absolute;
     
@@ -199,8 +200,8 @@
 .reg_inner > form{
     width:100%;
     height:100%;
-    background-color: rgb(0, 0, 0);
-    color:white;
+    background-color: rgb(52, 10, 202);
+    color:rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
 }

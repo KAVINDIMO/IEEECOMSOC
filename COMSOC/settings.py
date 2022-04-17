@@ -81,12 +81,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'COMSOC.wsgi.application'
 
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
-SITE_ID = 2
+
+
 # SOCIALACCOUNT_PROVIDERS = {
 #     'google': {
 #         # For each OAuth based provider, either add a ``SocialApp``
@@ -100,11 +97,25 @@ SITE_ID = 2
 #     }
 # }
 
+SITE_ID = 2
+
+
+
+
+LOGIN_URL = '/accounts/login/'
+LOGOUT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
-        # For each OAuth based provider, either add a ``SocialApp``
-        # (``socialaccount`` app) containing the required client
-        # credentials, or list them here:
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
         'APP': {
             'client_id': '550968241243-o5otd2r5fajip8vqcr88erhg8641p28g.apps.googleusercontent.com',
             'secret': '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',
@@ -112,6 +123,19 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         # For each OAuth based provider, either add a ``SocialApp``
+#         # (``socialaccount`` app) containing the required client
+#         # credentials, or list them here:
+#         'APP': {
+#             'client_id': '550968241243-o5otd2r5fajip8vqcr88erhg8641p28g.apps.googleusercontent.com',
+#             'secret': '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',
+#             'key': ''
+#         }
+#     }
+# }
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend'
@@ -186,6 +210,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 

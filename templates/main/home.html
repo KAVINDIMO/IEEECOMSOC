@@ -26,16 +26,75 @@
         <ul class="navlist">
             <!-- <span class="logotitle">IEEE COMSOC</span> -->
             <img class="navimg" src="https://www.comsoc.org/themes/custom/comsoc/components/images/ieee-comsoc.svg">
-            <li class="navitem">HOME</li>
+            <li class="navitem"><a href="/">HOME</a></li>
             <li class="navitem"><a href="/event">EVENTS</a></li>
             <li class="navitem"> <a href="/blog">BLOG</a></li>
             <li class="navitem"> <a href="/posts">POSTS</a></li>
             <li class="navitem">PROJECTS</li>
             <li class="navitem">BOARD MEMBERS</li>
             <li class="navitem"><a href="/login">LOGIN</a></li>
+            <li><p>{{user.username}}</p></li>
             
         </ul>
     </div>
+
+    <div class="slider-main">
+        <div class="slider active">
+            <div class="about">
+                <img src="https://www.comsoc.org/sites/default/files/styles/1400wide/public/images/2022-2022-01/Training-Hompage-Conference-Banners-Jan20_v1_07JAN20_JB-03.png?itok=6udyVpVI">
+            
+            </div>
+        </div> 
+        <div class="slider">
+            <div class="about">
+            <img src="https://learn.g2.com/hubfs/communication%20technology.jpg">
+           
+            </div>
+        </div>
+        <div class="slider">
+            <div class="about">
+            <img src="https://financialtribune.com/sites/default/files/field/image/17january/04-communications_469-ab_zire_lead_1.jpg">
+           
+            </div>
+        </div>
+        <div class="slider">
+            <div class="about">
+            <img src="https://wallpaperaccess.com/full/2403934.jpg">
+            </div>
+        </div>
+   
+        <div class="navigation">
+          <i class="fas fa-chevron-left prev-btn" ></i>
+          <i class="fas fa-chevron-right nxt-btn" > </i>
+        </div>
+        <div class="scroll">
+            <div class="slide-icons active"></div>
+            <div class="slide-icons"></div>
+            <div class="slide-icons"></div>
+            <div class="slide-icons"></div>
+        </div>
+    </div>
+
+    <div class="txtabout">
+        <h3>ABOUT</h3>
+        <p><b>Your Global Network : We are ComSoc, the IEEE Communications Society</b></p>
+        <p>We are all called to communications technology. Our reasons and regions may be widely different, but our goal is the same:</p>
+        <p><b>o advance communications and networking technology for the betterment of humanity.</b></p>
+        <p class="des">Right now, in more than 140 countries around the world, tens of thousands of members are actively working as engineers, academics, practitioners, scientists, executives, and associates—contributing new ideas and information to our collective knowledge, developing higher industry standards, and changing the way we all communicate, for the better.</p>
+        <p class="head">Our Mission Statement</p>
+        <p class="des">The IEEE Communications Society promotes technological innovation and fosters creation and sharing of information among  the global technical community. The Society provides services to members for their technical and professional advancement and forums for technical exchanges among professionals in academia, industry, and public institutions.</p>
+        <p class="head">Our Vision Statement</p>
+        <p class="des">To bring the world together in harmony through communications and networking technology research, application, education, and incubation of new ideas.</p>
+    </div>
+    <footer>
+        <div class="fmain">
+            <div class="social">
+                <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="www.instagram.com"><i class="fa-brands fa-twitter"></i></i></a>
+
+            </div>
+        </div>
+    </footer>
    
 </body>
 </html>
@@ -56,3 +115,41 @@
       
     }
 </script>
+
+<script type="text/javascript">
+    const nextBtn = document.querySelector(".nxt-btn");
+    const prevBtn = document.querySelector(".prev-btn");
+    const slider = document.querySelectorAll(".slider");
+    const slideIcons = document.querySelectorAll(".slide-icons");
+    const total = slider.length;
+    var sn = 0;
+
+    nextBtn.addEventListener("click",()=>{
+        slider.forEach((slide) => {
+            slide.classList.remove("active");
+        });
+        slideIcons.forEach((slideIcon) => {
+            slideIcon.classList.remove("active");
+        });
+        sn++;
+        if(sn>(total-1)){
+            sn=0;
+        }
+        slider[sn].classList.add("active");
+        slideIcons[sn].classList.add("active");
+    })
+    prevBtn.addEventListener("click",()=>{
+        slider.forEach((slide) => {
+            slide.classList.remove("active");
+        });
+        slideIcons.forEach((slideIcon) => {
+            slideIcon.classList.remove("active");
+        });
+        sn--;
+        if(sn==-1){
+            sn=3;
+        }
+        slider[sn].classList.add("active");
+        slideIcons[sn].classList.add("active");
+    })
+   </script>
