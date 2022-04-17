@@ -36,14 +36,28 @@
                 
             </ul>
         </div>
+     <div class="post_main">
     {% for i in obj%}
-
-    <h3>{{i.post_name}}</h3>
-    <p>{{i.post_image}}</p>
-    <img src="{{i.post_image.url}}" />
+    <div class="post_inner">
+        <img src="{{i.post_image.url}}" />
+        <h3>{{i.post_name}}</h3>
+        <p>{{i.post_image}}</p>
+        
+    </div>
+  
     {% endfor %}
+</div>
 </body>
 </html>
+<style>
+    body{
+    background:url("{% static 'IMAGES/LOOP.gif' %}");
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+</style>
 
 <script>
     let tog = document.querySelector(".navtog")

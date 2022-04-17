@@ -8,6 +8,8 @@
 }
 
 
+
+
 .navbar{
     width:100vw;
     height:10vh;
@@ -48,6 +50,35 @@
 
 .navicon{
     width:20px;
+}
+
+/*navend*/
+
+.post_main{
+    width:100vw;
+    height:100%;
+    display: flex;
+    flex-direction: row;
+    background: transparent;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
+    padding:5rem;
+
+}
+
+.post_inner{
+    width:300px;
+    height: 400px;
+    background: #474545;
+    display: flex;
+    flex-direction: column;
+}
+
+.post_inner > img{
+    width:100%;
+    height:60%;
+    
 }
 
 
@@ -113,5 +144,7 @@
 
     }
 }
+
+
 
 

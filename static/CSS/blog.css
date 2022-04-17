@@ -121,7 +121,7 @@
     display: flex;
     flex-flow:column;
     color: #000000;
-    background: grey;
+    background:transparent;
 }
 
 .blog_main > .bloginner{
@@ -129,7 +129,7 @@
     height:40%;
     display: flex;
     flex-direction: row;
-    background:linear-gradient(rgba(32,32,32,.9),rgba(32,32,32,.9));
+    /* background:linear-gradient(rgba(32,32,32,.9),rgba(32,32,32,.9)); */
     color: aliceblue;
 }
 .blogimg{
