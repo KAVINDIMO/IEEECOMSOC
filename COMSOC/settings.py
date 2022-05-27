@@ -12,8 +12,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,8 +27,12 @@ SECRET_KEY = 'django-insecure-den#0ny2-fqlxg$(&$ryo#_=%wn=nbc94*7h)m+u5iouo_nklt
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://ieeecomsocvit.azurewebsites.net']
+CSRF_TRUSTED_ORIGINS = ['https://ieeecomsocvit.azurewebsites.net','http://127.0.0.1:8000']
 
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+
+# os.environ['HTTPS'] = "on"
 
 # Application definition
 
@@ -76,12 +81,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'COMSOC.wsgi.application'
 
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
-SITE_ID = 2
+
+
 # SOCIALACCOUNT_PROVIDERS = {
 #     'google': {
 #         # For each OAuth based provider, either add a ``SocialApp``
@@ -95,11 +97,25 @@ SITE_ID = 2
 #     }
 # }
 
+SITE_ID = 2
+
+
+
+
+LOGIN_URL = '/accounts/login/'
+LOGOUT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
-        # For each OAuth based provider, either add a ``SocialApp``
-        # (``socialaccount`` app) containing the required client
-        # credentials, or list them here:
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
         'APP': {
             'client_id': '550968241243-o5otd2r5fajip8vqcr88erhg8641p28g.apps.googleusercontent.com',
             'secret': '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',
@@ -107,6 +123,19 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         # For each OAuth based provider, either add a ``SocialApp``
+#         # (``socialaccount`` app) containing the required client
+#         # credentials, or list them here:
+#         'APP': {
+#             'client_id': '550968241243-o5otd2r5fajip8vqcr88erhg8641p28g.apps.googleusercontent.com',
+#             'secret': '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',
+#             'key': ''
+#         }
+#     }
+# }
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend'
@@ -159,14 +188,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/static/'
+
 if DEBUG == True:
         STATICFILES_DIRS = [
             os.path.join(BASE_DIR, 'static')
        ]
 else:
-        STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+        STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR,'static')
 # ]
@@ -180,5 +210,8 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+django_heroku.settings(locals())

@@ -1,5 +1,6 @@
 from asyncio import events
 from http.client import HTTPResponse
+import re
 from django.shortcuts import render,redirect
 
 from main.forms import BLOG_FORM, EVENT_FORM, EVENT_REG, POSTS_FORM
@@ -10,6 +11,9 @@ from .models import *
 
 def Home(request):
     return render(request,"main/home.html",{})
+
+def board(request):
+    return render(request,"main/board.html",{})
 
 def Events(request):
     obj = Event.objects.all()
@@ -82,5 +86,8 @@ def blog_upload(request):
         'form':form
     }
     return render(request,"main/blog_upload.html",data)
+
+
+    
 
 

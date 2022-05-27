@@ -27,21 +27,73 @@
             <ul class="navlist">
                 <!-- <span class="logotitle">IEEE COMSOC</span> -->
                 <img class="navimg" src="https://www.comsoc.org/themes/custom/comsoc/components/images/ieee-comsoc.svg">
-                <li class="navitem">HOME</li>
+                <li class="navitem"><a href="/">HOME</a></li>
                 <li class="navitem"><a href="/event">EVENTS</a></li>
                 <li class="navitem"> <a href="/blog">BLOG</a></li>
                 <li class="navitem"> <a href="/posts">POSTS</a></li>
-                <li class="navitem">PROJECTS</li>
-                <li class="navitem">BOARD MEMBERS</li>
-                <li class="navitem"><a href="/login">LOGIN</a></li>
+                <!-- <li class="navitem">PROJECTS</li> -->
+                <li class="navitem"><a href="/board">BOARD MEMBERS</a></li>
+                <!-- <li class="navitem"><a href="/login">LOGIN</a></li> -->
                 
             </ul>
         </div>
+        <div class="blog_main"> 
+
     {% for i in obj%}
 
-    <h3>{{i.Title}}</h3>
-    <p>{{i.author}}</p>
-    <img src="{{i.author_pic.url}}" />
+<div class="bloginner">
+    <div class="blogimg">
+        <img src="{{i.author_pic.url}}" />
+    </div>
+    <div class="blogabout">
+        <h4><b>BLOG NAME:</b>{{i.Title}}</h4>
+        <p><b>AUTHOR:</b>{{i.author}}</p>
+        <button><a href="{{i.blog_link}}">READ</a></button>
+    </div>
+ 
+    
+</div>
+   
+
+    
     {% endfor %}
+</div>
+
+    
 </body>
 </html>
+
+<style>
+    body{
+    background: linear-gradient(rgba(32,32,32,.9),rgba(32,32,32,.9)),url("{% static 'IMAGES/ROCKET.gif' %}") center center fixed;
+    background-color: rgba(0, 0, 0, 0);
+    background-position-x: 90%, right;
+    background-position-y: 0%, center;
+    background-repeat: repeat;
+    background-image: linear-gradient(rgba(32, 32, 32, 0.9), rgba(32, 32, 32, 0.9)), url("{% static 'IMAGES/ROCKET.gif' %}");
+    background-size: auto, auto;
+    background-origin:content-box;
+    background-clip: border-box;
+    background-size: cover;
+        /* background: url("{% static 'IMAGES/ROCKET.gif' %}") ;
+        background-repeat: no-repeat; 
+        background-size: cover; */
+    }
+</style>
+
+<script>
+    let tog = document.querySelector(".navtog")
+    let nav = document.querySelector(".navlist")
+    let temp=0
+    tog.onclick = ()=>{
+        if(temp===0){
+            nav.classList.add("shownav")
+            temp=1
+        }
+        else{
+            nav.classList.remove("shownav")
+            temp=0
+        }
+      
+    }
+</script>

@@ -14,30 +14,118 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap" rel="stylesheet"> 
 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@200;400;500&display=swap" rel="stylesheet">
+
     <link rel='stylesheet'  href="{% static 'CSS\home.css' %}">
 </head>
 <body>
     <div class="navbar">
     <div class="navtog">
         <div class="navicon"><i class="fa-solid fa-bars"></i></div>
-        <img class="navimg" src="https://www.comsoc.org/themes/custom/comsoc/components/images/ieee-comsoc.svg">
+        <img class="navimg" src="{% static 'IMAGES\LOGO.svg' %}">
     </div>
     
         <ul class="navlist">
             <!-- <span class="logotitle">IEEE COMSOC</span> -->
             <img class="navimg" src="https://www.comsoc.org/themes/custom/comsoc/components/images/ieee-comsoc.svg">
-            <li class="navitem">HOME</li>
+            <li class="navitem"><a href="/">HOME</a></li>
             <li class="navitem"><a href="/event">EVENTS</a></li>
             <li class="navitem"> <a href="/blog">BLOG</a></li>
             <li class="navitem"> <a href="/posts">POSTS</a></li>
-            <li class="navitem">PROJECTS</li>
-            <li class="navitem">BOARD MEMBERS</li>
-            <li class="navitem"><a href="/login">LOGIN</a></li>
+            <!-- <li class="navitem">PROJECTS</li> -->
+            <li class="navitem"><a href="/board">BOARD MEMBERS</a></li>
+            <!-- <li class="navitem"><a href="/login">LOGIN</a></li> -->
+            <!-- <li><p>{{user.username}}</p></li> -->
             
         </ul>
     </div>
+    <!-- <div class="INTRO"><h1 class="text-gradient">IEEE COMSOC</h1></div> -->
+
+    <div class="slider-main">
+        <div class="slider active">
+            <div class="about">
+                <img src="https://c4.wallpaperflare.com/wallpaper/266/749/195/digital-digital-art-artwork-illustration-drawing-hd-wallpaper-preview.jpg">
+            
+            </div>
+        </div> 
+        <div class="slider">
+            <div class="about">
+                <img src="{% static 'IMAGES\HOME2.jpg' %}">
+           
+            </div>
+        </div>
+        <div class="slider">
+            <div class="about">
+                <img src="{% static 'IMAGES\HOME3.jpg' %}"> 
+            </div>
+        </div>
+        <div class="slider">
+            <div class="about">
+                <img src="{% static 'IMAGES\HOME4.jpg' %}">
+            </div>
+        </div>
+   
+        <div class="navigation">
+          <i class="fas fa-chevron-left prev-btn" ></i>
+          <i class="fas fa-chevron-right nxt-btn" > </i>
+        </div>
+        <div class="scroll">
+            <div class="slide-icons active"></div>
+            <div class="slide-icons"></div>
+            <div class="slide-icons"></div>
+            <div class="slide-icons"></div>
+        </div>
+    </div>
+
+    <div class="txtabout">
+        <h3 class="head">ABOUT</h3>
+        <p><b>Your Global Network : We are ComSoc, the IEEE Communications Society</b></p>
+        <p>We are all called to communications technology. Our reasons and regions may be widely different, but our goal is the same:</p>
+        <p><b>o advance communications and networking technology for the betterment of humanity.</b></p>
+        <p class="des">Right now, in more than 140 countries around the world, tens of thousands of members are actively working as engineers, academics, practitioners, scientists, executives, and associates—contributing new ideas and information to our collective knowledge, developing higher industry standards, and changing the way we all communicate, for the better.</p>
+    </div>
+    <div class="txtabout">
+
+        <p class="head">Our Mission Statement</p>
+        <p class="des">The IEEE Communications Society promotes technological innovation and fosters creation and sharing of information among  the global technical community. The Society provides services to members for their technical and professional advancement and forums for technical exchanges among professionals in academia, industry, and public institutions.</p>
+    </div>
+    <div class="txtabout">
+        <p class="head">Our Vision Statement</p>
+        <p class="des">To bring the world together in harmony through communications and networking technology research, application, education, and incubation of new ideas.</p>
+    </div>
+    <footer>
+        <div class="fmain">
+            <div class="social">
+                <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/ieeecomsocvit"><i class="fa-brands fa-linkedin"></i></i></a>
+
+            </div>
+            <p style="text-align:centre ;color:white">©IEEECOMSOC_VIT  2022</p>
+        </div>
+        
+    </footer>
    
 </body>
+
+<style>
+    body{
+    background: linear-gradient(rgba(10, 84, 153, 0.9),rgba(32, 32, 32, 0.9)),url("{% static 'IMAGES/ROCKET.gif' %}") center center fixed;
+    background-color: rgba(0, 0, 0, 0);
+    background-position-x: 90%, right;
+    background-position-y: 0%, center;
+    background-repeat: repeat;
+    background-image: linear-gradient(rgba(90, 90, 250, 0.8), rgba(90, 90, 255, 0.8)), url("{% static 'IMAGES/ROCKET.gif' %}");
+    background-size: auto, auto;
+    background-origin:content-box;
+    background-clip: border-box;
+    background-size: cover;
+        /* background: url("{% static 'IMAGES/ROCKET.gif' %}") ;
+        background-repeat: no-repeat; 
+        background-size: cover; */
+    }
+</style>
 </html>
 
 <script>
@@ -56,3 +144,41 @@
       
     }
 </script>
+
+<script type="text/javascript">
+    const nextBtn = document.querySelector(".nxt-btn");
+    const prevBtn = document.querySelector(".prev-btn");
+    const slider = document.querySelectorAll(".slider");
+    const slideIcons = document.querySelectorAll(".slide-icons");
+    const total = slider.length;
+    var sn = 0;
+
+    nextBtn.addEventListener("click",()=>{
+        slider.forEach((slide) => {
+            slide.classList.remove("active");
+        });
+        slideIcons.forEach((slideIcon) => {
+            slideIcon.classList.remove("active");
+        });
+        sn++;
+        if(sn>(total-1)){
+            sn=0;
+        }
+        slider[sn].classList.add("active");
+        slideIcons[sn].classList.add("active");
+    })
+    prevBtn.addEventListener("click",()=>{
+        slider.forEach((slide) => {
+            slide.classList.remove("active");
+        });
+        slideIcons.forEach((slideIcon) => {
+            slideIcon.classList.remove("active");
+        });
+        sn--;
+        if(sn==-1){
+            sn=3;
+        }
+        slider[sn].classList.add("active");
+        slideIcons[sn].classList.add("active");
+    })
+   </script>
