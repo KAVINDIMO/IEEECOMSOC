@@ -50,6 +50,115 @@
     width:20px;
 }
 
+.wrapper {
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw;
+    gap: 4rem;
+    grid-auto-rows:50vh 50vh 50vh;
+    padding:6%;
+    margin-left:3vw;
+  }
+.zero{
+    grid-column: 2;
+    grid-row: 1;
+    background: #474545;
+
+}
+  .one {
+    grid-column: 1;
+    grid-row: 2;
+    background: #474545;
+  }
+  .two {
+    grid-column: 2;
+    grid-row: 2 ;
+    background: #474545;
+  }
+  .three {
+    grid-column: 3;
+    grid-row: 2;
+    background: #474545;
+  }
+
+  .four{
+    grid-column: 2;
+    grid-row: 3 ;
+    background: #474545;
+
+  }
+
+  .zero,.one,.two,.three,.four{
+      border-radius: 50%;
+  }
+  
+  .prof{
+      width:100%;
+      height:100%;
+     
+
+  }
+  .pimg{
+    width:100%;
+    height:100%;
+    border-radius: 50%;
+    background-color: black;
+
+  }
+  .pimg > img{
+      position: absolute;
+      width:25vw;
+      height:50vh;
+      image-rendering: pixelated;
+      border-radius: 50%;
+      border:5px solid rgb(21, 238, 227);
+  }
+
+  .pos{
+    
+    width:25vw;
+    height:50vh;
+    position:absolute;
+    background: rgba(92, 30, 5, 0.575);
+    z-index: 3;
+    visibility: hidden;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    text-align: center;
+    clip-path: circle(0% at 100% 100%);
+ 
+   
+  }
+
+  .prof:hover  .pos{
+      visibility: visible;
+      transition: all .7s ease-in-out;
+      clip-path: circle(100%);
+  }
+
+  .wrapper_2{
+      width: 100vw;
+      height:auto;
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw;
+    row-gap: 3rem;
+    column-gap: 5rem;
+    grid-auto-rows:50vh 50vh;
+    padding:4%;
+    margin-left:3vw;
+  }
+
+  .inner_div{
+    width:100%;
+    height:100%;
+    border-radius: 50%;
+
+  }
+
+
+  
+
 
 
 
@@ -112,6 +221,44 @@
         font-size:30px;
 
     }
+    .wrapper{
+        width:100vw;
+        height:auto;
+        grid-template-columns:auto;
+        row-gap: 10px;
+
+    }
+    .one,.two,.three,.four,.zero{
+        width:80vw;
+        height:50vh;
+        grid-row: auto;
+        grid-column: auto;
+    }
+    .wrapper > *{
+        width:80vw;
+
+    }
+
+    .wrapper_2{
+        grid-template-columns:auto;
+        width:100vw;
+        height:auto;
+
+    }
+    .pimg > img{
+        width:80vw;
+  
+    }
+    .pimg{
+        width:80vw;
+        height:50vh;
+
+    }
+    .pos{
+        width:80vw;
+        height:50vh;
+    }
+   
 }
 
 

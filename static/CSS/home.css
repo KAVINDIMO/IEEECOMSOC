@@ -12,6 +12,9 @@ body{
     
 }
 
+.about > img{
+    image-rendering:optimizeSpeed;
+}
 
 .navbar{
     width:100vw;
@@ -26,6 +29,7 @@ body{
 .navlist{
     width:100%;
     height:100%;
+    color:rgb(17, 65, 221) !important;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -35,11 +39,17 @@ body{
   
 }
 
-
-
-.navitem  >a{
+.navitem  > a{
     text-decoration: none;
+    
 }
+
+a:visited { 
+    text-decoration: none; 
+    color:rgb(17, 65, 221); 
+   }
+
+
 
 .navtog{
     display: none;
@@ -82,12 +92,12 @@ display: none;
 
 
 position: relative;
-margin-top: 10vh;
-height:70vh;
+margin-top: 5vh;
+height:100vh;
 margin-left:auto;
 margin-right:auto;
-width: 80%; 
-background:rgba(1, 5, 56, 0.925);
+width: 90%; 
+background:rgba(8, 22, 145, 0.61);
 
 }
 
@@ -113,11 +123,19 @@ color:#FFF;
 padding:auto;
 
 }
+.txtabout{
+    width:100%;
+    height: auto;
+    background-color: #100725;
+    padding:5%;
+    margin-bottom: 10px;
+}
 
 .about{
     width:100%;
     height:100%;
     padding:5%;
+    text-align: center;
 }
 
 
@@ -127,7 +145,7 @@ padding:auto;
 
 .about > img{
     width:100%;
-    height:90%;
+    height:100%;
     
 }
 .prev-btn , .nxt-btn{
@@ -137,7 +155,7 @@ padding:auto;
     color:white;
     cursor: pointer;
     font-weight: 700;
-    background: transparent;
+    background: #474545;
     opacity: 80%;
     padding:10px;
 
@@ -161,18 +179,46 @@ padding:auto;
     background:blue;
 }
 
-
+ 
 /*slide end*/
 
+.text-gradient{
+    background: linear-gradient(94.23deg,#df3806 12.41%,#0baabe 52.55%,#69ff69d2 89.95%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .txtabout{
-    color:black;
+    background: #120520;
+    color:whitesmoke;
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-   
-    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+
+    /* font-family: 'Poppins', sans-serif; */
+    animation: 2s slide-right;
+    animation-delay: .5s;
+    animation-timing-function: ease;
 }
 
+@keyframes slide-right {
+    from {
+       margin-left: -500px;
+    }
+
+    to {
+       margin-left: 0%;
+    }
+ }
+.head{
+    font-size: 30px;
+    font-style: bold;
+    font-weight: 800;
+    color:rgba(0, 225, 255, 0.863);
+    text-align: center;
+}
 footer{
     width:100vw;
     height:10em;
@@ -185,12 +231,23 @@ footer > .fmain{
     align-items: center;
 }
 
+.social{
+    width:50vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
 .social >  a > i{
     font-size: 40px;
+    margin:2rem;
 }
 .social >  a:nth-child(1){
     color:rgb(102, 2, 77);
 }
+
 
 
 
@@ -204,6 +261,7 @@ footer > .fmain{
     .logotitle{
         display: none;
     }
+
 
     .navlist{
         display: none;

@@ -1,4 +1,5 @@
 {% load static %}
+{% load customfilter %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,14 +31,15 @@
                 <li class="navitem"><a href="/event">EVENTS</a></li>
                 <li class="navitem"> <a href="/blog">BLOG</a></li>
                 <li class="navitem"> <a href="/posts">POSTS</a></li>
-                <li class="navitem">PROJECTS</li>
-                <li class="navitem">BOARD MEMBERS</li>
-                <li class="navitem"><a href="/login">LOGIN</a></li>
+                <!-- <li class="navitem">PROJECTS</li> -->
+                <li class="navitem"><a href="/board">BOARD MEMBERS</a></li>
+                <!-- <li class="navitem"><a href="/login">LOGIN</a></li> -->
                 
             </ul>
         </div>
    
     <div class="reg_form">
+        
         <div class="reg_inner">
         <p class="name"></p>
         <form method="post" enctype="multipart/form-data">
@@ -56,6 +58,7 @@
         <label>PHONE</label>
         {{form.phone}}
         <input type="submit" value="Submit">
+        <div class="close"><i class="fa-solid fa-xmark"></i></div>
        </div>
     </div>
 
@@ -69,13 +72,17 @@
         <div class="event_content">
         <div class="content_inner">
             <p class="event_name">{{i.event_name}}</p>
+           
+            <hr>
             <p>{{i.speaker}}</p>
+            <hr>
             <p>{{i.event_description}}</p>
+            <hr>
             <p class="edate">{{i.event_data|date:"M d,Y H:i:s"}}</p>
             
          </div> 
          <div class="content_act">
-            <p id="starts"></p>
+            <div class="timer"><p id="starts"></p></div>
             <button class="reg_butt">REGISTER</button>
          </div>
         </div>
@@ -86,13 +93,31 @@
 
 </body>
 
+<style>
+    body{
+    background: linear-gradient(rgba(10, 84, 153, 0.9),rgba(32, 32, 32, 0.9)),url("{% static 'IMAGES/ROCKET.gif' %}") center center fixed;
+    background-color: rgba(0, 0, 0, 0);
+    background-position-x: 90%, right;
+    background-position-y: 0%, center;
+    background-repeat: repeat;
+    background-image: linear-gradient(rgba(90, 90, 250, 0.8), rgba(90, 90, 255, 0.8)), url("{% static 'IMAGES/ROCKET.gif' %}");
+    background-size: auto, auto;
+    background-origin:content-box;
+    background-clip: border-box;
+    background-size: cover;
+        /* background: url("{% static 'IMAGES/ROCKET.gif' %}") ;
+        background-repeat: no-repeat; 
+        background-size: cover; */
+    } 
+</style>
+
 <script>
     let butt = document.querySelectorAll(".reg_butt")
     let events = document.querySelectorAll(".event_name")
     let reg = document.querySelector(".reg_form")
     let n = document.querySelector(".name")
     let en = document.querySelector("#ename")
-
+    let cls = document.querySelector(".close")
 
     for(let i=0;i<butt.length;i++){
         console.log(butt[i])
@@ -102,8 +127,21 @@
             en.setAttribute('value',events[i].innerHTML)
             console.log(events[i].innerHTML)
         }
+
      
     }
+    cls.onclick = ()=>{
+        reg.classList.remove("show_form")
+    }
+    // for(let i=0;i<butt.length;i++){
+    //     console.log(butt[i])
+    //     cls[i].onclick = ()=>{
+    //         reg.classList.remove("show_form")
+            
+    //     }
+        
+     
+    // }
   
 </script>
 <script>

@@ -23,6 +23,9 @@ class event_reg(models.Model):
     email = models.EmailField()
     phone = models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
 class blog(models.Model):
     Title = models.CharField(max_length=100)
     author = models.CharField(max_length=50)

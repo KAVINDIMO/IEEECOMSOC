@@ -1,4 +1,5 @@
 {% load static %}
+{% load customfilter %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,9 +31,9 @@
                 <li class="navitem"><a href="/event">EVENTS</a></li>
                 <li class="navitem"> <a href="/blog">BLOG</a></li>
                 <li class="navitem"> <a href="/posts">POSTS</a></li>
-                <li class="navitem">PROJECTS</li>
-                <li class="navitem">BOARD MEMBERS</li>
-                <li class="navitem"><a href="/login">LOGIN</a></li>
+                <!-- <li class="navitem">PROJECTS</li> -->
+                <li class="navitem"><a href="/board">BOARD MEMBERS</a></li>
+                <!-- <li class="navitem"><a href="/login">LOGIN</a></li> -->
                 
             </ul>
         </div>
@@ -41,7 +42,6 @@
     <div class="post_inner">
         <img src="{{i.post_image.url}}" />
         <h3>{{i.post_name}}</h3>
-        <p>{{i.post_image}}</p>
         
     </div>
   
